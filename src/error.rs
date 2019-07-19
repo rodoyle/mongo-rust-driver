@@ -62,7 +62,7 @@ impl error::Error for MongoError {
         }
     }
 
-    fn cause(&self) -> Option<&error::Error> {
+    fn cause(&self) -> Option<&dyn error::Error> {
         match *self {
             MongoError::Bsonc(ref err) => Some(err),
             MongoError::Decoder(ref err) => Some(err),
